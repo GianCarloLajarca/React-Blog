@@ -46,13 +46,13 @@ const Post = () => {
             <div className='flex'>
                 <div className={`main-wrapper px-4 transition-all py-3 sticky top-0 w-full`}>
                 <div className='flex justify-between items-center'>
-                    <h1>Post Database</h1>
-                    <Searchbar setIsSearch={setIsSearch} setKeyword={setKeyword}/>
+                    <h1>Posts Database</h1>
+                    
                     
                 </div>
 
-                <div className='tab flex justify-between items-center mt-8 border-b border-line mb-8'>
-                    <h2>Search</h2>
+                <div className='tab flex justify-between items-center mt-8 border-b border-line mb-8 pb-2'>
+                <Searchbar setIsSearch={setIsSearch} setKeyword={setKeyword}/>
                     <button className='btn btn--accent' onClick={handleAdd}>
                         <FiPlus /> New
                     </button>

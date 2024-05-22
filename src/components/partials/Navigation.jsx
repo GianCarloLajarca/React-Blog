@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaTiktok } from 'react-icons/fa'
+import { FaBlog, FaTiktok } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import Logo from './svg/Logo'
 
@@ -8,10 +8,10 @@ const Navigation = () => {
     <aside className='px-4 py-6 w-[250px] text-primary h-screen border-r border-line'>
       <div className='flex items-center gap-4'>
         <Logo />
-        <h2 className='mb-0'>Blog</h2>
+        <h2 className='mb-0 text-3xl'>Blog</h2>
       </div>
         <ul className='nav'>
-            <li className='nav-link active'><Link to="#"><FaTiktok/>Dashboard</Link></li>
+            <li className='nav-link active'><Link to="/post"><FaBlog />Posts</Link></li>
             <li className='nav-link'><Link to="#"><FaTiktok/>Messenger</Link></li>
             <li className='nav-link'><Link to="#"><FaTiktok/>Calendar</Link></li>
             <li className='nav-link'><Link to="#"><FaTiktok/>Database</Link></li>

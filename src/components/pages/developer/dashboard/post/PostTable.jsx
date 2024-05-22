@@ -50,6 +50,7 @@ const PostTable = ({isLoading, isFetching, post, setItemEdit}) => {
                         <th className='w-[20px]'>#</th>
                         <th className='w-[150px]'>Title</th>
                         <th className='w-[80px]'>Category</th>
+                        <th className='w-[80px]'>Author</th>
                         <th className='w-[80px]'>Published</th>
                         <th className='w-[100px]'>Action</th>
                     </tr>
@@ -77,6 +78,7 @@ const PostTable = ({isLoading, isFetching, post, setItemEdit}) => {
                 <td>{counter++}</td>
                 <td>{item.post_title}</td>
                 <td>{item.post_category}</td>
+                <td>{item.post_author}</td>
                 <td>{item.post_publish_date}</td>
                 <td className='table-action'>
                     <ul>
