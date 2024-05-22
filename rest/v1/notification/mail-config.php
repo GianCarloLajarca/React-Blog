@@ -1,7 +1,7 @@
 <?php
 define("USERNAME", "noreply@lcss.frontlinebusiness.com.ph");
 define("PASSWORD", "~s1p32f19Pt@");
-define("FROM", "My Portfolio");
+define("FROM", "My Post");
 define("VERIFY_ACCOUNT", "Account Verification");
 define("RESET_PASSWORD", "Reset Password");
 

@@ -5,18 +5,18 @@ const Searchbar = ({setIsSeach, setKeyword}) => {
     
   const handleChange = async (e) => {
     if(e.target.value === "") {
-        setIsSeach(false)
+        setIsSearch(false)
     } else {
-        setIsSeach(true)
+        setIsSearch(true)
     }
     setKeyword(e.target.value);
   }
 
   return (
     <form action="" className='relative'>
-        <input type="text" placeholder='Search Student' className='p-1 px-3 pl-10 outline-none bg-secondary border-stone-800 rounded-md placeholder:text-white placeholder:opacity-20'  onChange={(e) => handleChange(e)}
+        <input type="text" placeholder='Search Post' className='p-1 px-3 pl-10 outline-none bg-secondary border-stone-800 rounded-md placeholder:text-content placeholder:opacity-20'  onChange={(e) => handleChange(e)}
         />
-        <CiSearch className='absolute top-1 left-2 z-20 text-white text-2xl opacity-20 text-2xl'/>
+        <CiSearch className='absolute top-1 left-2 z-20 text-content text-2xl opacity-20 text-2xl'/>
         
     </form>
   )

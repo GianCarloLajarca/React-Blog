@@ -1,4 +1,4 @@
-export const devBaseImgUrl="http://localhost/react-portfolio-demo/public/img/"
+export const devBaseImgUrl="http://localhost/react-post/public/img/"
 import React from "react";
 import { setError, setMessage } from "../../store/StoreAction";
 import { devApiUrl, fetchFormData } from "../helpers/functions-general";

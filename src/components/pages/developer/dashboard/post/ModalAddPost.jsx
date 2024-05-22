@@ -56,7 +56,7 @@ const ModalAddPost = ({itemEdit}) => {
 
     const yupSchema = Yup.object({
         post_title: Yup.string().required('Required'),
-        post_photo: Yup.string().required('Required'),
+        // post_photo: Yup.string().required('Required'),
         post_author: Yup.string().required('Required'),
         post_category: Yup.string().required('Required'),
         post_article: Yup.string().required('Required'),
@@ -156,6 +156,14 @@ const ModalAddPost = ({itemEdit}) => {
                               type="text"
                               name="post_article"
                               className='h-[10rem] resize-none'
+                          />
+                      </div>
+
+                      <div className="input-wrap">
+                          <InputText
+                              label="Author"
+                              type="text"
+                              name="post_author"
                           />
                       </div>
 

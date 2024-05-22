@@ -23,7 +23,7 @@ const useSystemLogin = (navigate) => {
       } else {
         setLoading(false);
         // checkRoleToRedirect(navigate, login.data);
-        navigation(`/portfolio`)
+        navigation(`/post`)
       }
     };
     if (

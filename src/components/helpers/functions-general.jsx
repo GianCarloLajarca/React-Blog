@@ -1,6 +1,6 @@
-export const devBaseImgUrl="http://localhost/react-portfolio-demo/public/img/"
-export const urlPathPortfolio = "http://localhost/react-portfolio-demo";
-export const devApiUrl = `${urlPathPortfolio}/rest`;
+export const devBaseImgUrl="http://localhost/react-blog/public/img/"
+export const urlPathBlog = "http://localhost/react-blog";
+export const devApiUrl = `${urlPathBlog}/rest`;
 
 export const devKey =
   "$2a$12$47wDvbLInZif/PVS8B6P3.7WxyJvUpBzZAWCsnWJUKq3nrn4qgmeO";
