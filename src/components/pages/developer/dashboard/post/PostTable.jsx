@@ -78,7 +78,7 @@ const PostTable = ({isLoading, isFetching, post, setItemEdit}) => {
                 <tr key={key}>
                 <td>{counter++}</td>
                 <td>{item.post_title}</td>
-                <td>{item.post_category}</td>
+                <td>{item.category_title}</td>
                 <td>{item.post_article}</td>
                 <td>{item.post_author}</td>
                 <td>{item.post_publish_date}</td>

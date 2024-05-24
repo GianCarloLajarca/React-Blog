@@ -2,7 +2,7 @@ import React from 'react'
 import ModalWrapper from '../../../../partials/modals/ModalWrapper'
 import { LiaTimesSolid } from 'react-icons/lia'
 import { Formik, Form } from 'formik'
-import { InputFileUpload, InputText,InputTextArea } from '../../../../helpers/FormInputs'
+import { InputFileUpload, InputSelect, InputText,InputTextArea } from '../../../../helpers/FormInputs'
 import SpinnerButton from '../../../../partials/spinners/SpinnerButton'
 import { StoreContext } from '../../../../../store/StoreContext'
 import { setError, setIsAdd, setMessage, setSuccess } from '../../../../../store/StoreAction'
@@ -11,6 +11,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { queryData } from '../../../../helpers/queryData'
 import useUploadPhoto from '../../../../custom-hook/useUploadPhoto'
 import { devBaseImgUrl } from '../../../../helpers/functions-general'
+import useQueryData from '../../../../custom-hook/useQueryData'
 
 const ModalAddPost = ({itemEdit, position}) => {
 
@@ -20,6 +21,17 @@ const ModalAddPost = ({itemEdit, position}) => {
     const { uploadPhoto, handleChangePhoto, photo } = useUploadPhoto(
         `/v1/upload/photo`,
         dispatch
+      );
+      
+      const {
+        isLoading,
+        isFetching,
+        error,
+        data: category,
+      } = useQueryData(
+        `/v1/category`, // endpoint
+        "get", // method
+        "category" // key
       );
 
     const queryClient = useQueryClient();
@@ -49,7 +61,7 @@ const ModalAddPost = ({itemEdit, position}) => {
         post_photo: itemEdit ? itemEdit.post_photo : "",
         post_author: itemEdit ? itemEdit.post_author : "",
         post_title: itemEdit ? itemEdit.post_title : "",
-        post_category: itemEdit ? itemEdit.post_category : "",
+        post_category_id: itemEdit ? itemEdit.post_category_id : "",
         post_article: itemEdit ? itemEdit.post_article : "",
         post_publish_date: itemEdit ? itemEdit.post_publish_date : "",
     }
@@ -58,7 +70,7 @@ const ModalAddPost = ({itemEdit, position}) => {
         post_title: Yup.string().required('Required'),
         // post_photo: Yup.string().required('Required'),
         post_author: Yup.string().required('Required'),
-        post_category: Yup.string().required('Required'),
+        post_category_id: Yup.string().required('Required'),
         post_article: Yup.string().required('Required'),
         post_publish_date: Yup.string().required('Required'),
     })
@@ -147,14 +159,22 @@ const ModalAddPost = ({itemEdit, position}) => {
 
 
                                 </div>
-                                
-                            <div className="input-wrap">
-                                <InputText
-                                    label="Category"
-                                    type="text"
-                                    name="post_category"
-                                />
-                            </div>
+
+                                <div className="input-wrap">
+                                        <InputSelect
+                                            label="Category"
+                                            type="text"
+                                            name="post_category_id">
+                                                {category?.data.map((item, key)=> (
+                                                    <React.Fragment key={key}>
+                                                        <option hidden>Select</option>
+                                                        <option value={item.category_aid} >{item.category_title}</option>
+                                                    </React.Fragment >
+                                                )
+                                            )} 
+                                        </InputSelect>
+                                        </div>
+
 
                             <div className="input-wrap">
                                 <InputText

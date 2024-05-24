@@ -18,6 +18,8 @@ const Trending = () => {
         "post", // key
       );
 
+      const getTrending = () => post?.data.filter(item => item.post_category_id === 2)
+
   return (
     <section className='py-10'>
         <div className="container">
@@ -25,7 +27,7 @@ const Trending = () => {
             <div className="grid mt-10 gap-10 md:grid-cols-[1fr_2fr]">
                 <Card/>
             <div className='grid gap-10 md:grid-cols-2'>
-                {!isLoading && post?.data.slice(0, 4).map(
+                {!isLoading && getTrending().slice(0, 4).map(
                     (item, key) => (
                 
             <div className="shadow-[4px_2px_10px_5px_rgba(0,0,0,0.1)]  p-5 rounded-2xl" key={key}>
@@ -36,12 +38,12 @@ const Trending = () => {
                         </Link>
                     </div>
                 <small className='hover:bg-accent bg-stone-600  px-2 py-1 rounded-lg text-white font-bold 
-                    text-xs'>{item.post_category}</small>
+                    text-xs'>{item.category_title}</small>
                     <h3 className='mt-4 mb-0'>{item.post_title}</h3>
             </div>
             )
             )}
-            
+
             </div>
           </div>
         </div>
