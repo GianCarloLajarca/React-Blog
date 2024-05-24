@@ -1,119 +1,115 @@
 import React from 'react'
-import UIHeader from '../partials/UIHeader'
 import UIFooter from '../partials/UIFooter'
-import { Link } from 'react-router-dom'
+import UIHeader from '../partials/UIHeader'
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+import { devBaseImgUrl, getUrlParam } from '../../../../helpers/functions-general'
+import useQueryData from '../../../../custom-hook/useQueryData'
+import SpinnerWindow from '../../../../partials/spinners/SpinnerWindow'
+import Markdown from 'react-markdown'
 
 const Single = () => {
+    const id = getUrlParam().get('id')
+
+    const {
+        isLoading,
+        isFetching,
+        error,
+        data: post,
+      } = useQueryData (
+       `/v1/post/${id}`, // endpoint
+       "get", // method
+       "post", // key
+      );
+
+      
+
+
+      const {
+        isLoading:sideIsLoading,
+        isFetching:sideIsFetching,
+        error:sideError,
+        data: latestpost,
+      } = useQueryData (
+       `/v1/post`, // endpoint
+       "get", // method
+       "postx", // key
+      );
+
+
   return (
-    <>
+    <>  
         <UIHeader/>
-        <div className='banner mt-5 mb-10'>
-            <div className="container">
-                <h1 className='max-w-[800px] mb-0 mx-auto py-10 px-5 bg-header 
-                bg-opacity-10 rounded-lg border border border-header border-opacity-40'>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h1>
-            </div>
-        </div>
 
-        <div className="container">
-            <div className='grid md:grid-cols-[2fr_1fr] gap-10'>
-                <article>
-                    <div className='mb-10'>
-                        <small className='hover:bg-accent bg-stone-600  px-2 py-1 rounded-lg text-white font-bold 
-                        text-xs mb-3 inline-block'>Travel</small>
-
-                        <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
-
-                        <div className='flex justify-between items-center mt-4'>
-                            <div className='flex gap-3 items-center'>
-                                <img src="https://via.placeholder.com/40x40" alt="" className='rounded-full size-10 object-cover mb-0' />
-                                <small className='mb-0 text-nowrap opacity-60'>Johnny Hale</small>
+        {isLoading ? <SpinnerWindow/> : (
+            <>
+                 <div className='banner mt-5 mb-10'>
+                      <div className="container">
+                           <h1 className='max-w-[800px]  mb-0 mx-auto py-10 px-5 bg-header bg-opacity-10 rounded-lg border-2 border-header border-opacity-40'>
+                                {post?.data[0].post_title}
+                           </h1>
+                       </div>
+                   </div>
+                  <div className="container">
+                      <div className='grid md:grid-cols-[2fr_1fr] gap-10'>
+                            <div>
+                                <img src={`${devBaseImgUrl}/${post?.data[0].post_photo}`} alt="" />
+                                <article >
+                                <ul className='flex justify-between items-center list-none'>
+                                    <li>{post?.data[0].post_category}</li>
+                                    <li>{post?.data[0].post_publish_date}</li>
+                                </ul>
+                                <Markdown > 
+                                    {post?.data[0].post_article}
+                                </Markdown > 
+                              </article>
                             </div>
-                            <small className='opacity-60'>August 23, 2022</small>
-                        </div>
-                </div>
+                            
+                          <aside >
+                          <div className='sticky top-4'>
+          
+                                  
+          <div className="shadow-[4px_2px_10px_5px_rgba(0,0,0,0.1)]  p-5 rounded-2xl mb-5 ">
+              <img src={`${devBaseImgUrl}/${post?.data[0].post_photo}`} alt="" className='rounded-full size-[100px] object-cover mb-5 mx-auto' />
+              <h3 className='text-center'>Johnny Hale</h3>
+              <p className='text-center mb-5 !leading-snug'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint quis assumenda enim voluptatum impedit ad deserunt placeat laboriosam rem, dolorum cumque repellat adipisci ex culpa quam velit eligendi am?</p>
 
-                    <img src="https://starmometer.com/wp-content/uploads/2021/06/BINI-2.jpg" alt="" />
+              <ul className='flex justify-center gap-4'>
+                  <li><Link className='text-2xl'><FaFacebook/></Link></li>
+                  <li><Link className='text-2xl'><FaTwitter/></Link></li>
+                  <li><Link className='text-2xl'><FaInstagram/></Link></li>
+                  <li><Link className='text-2xl'><FaYoutube/></Link></li>
+              </ul>
+          </div>
 
-                    <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, veritatis.</h2>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus dolores, architecto ea culpa totam 
-                        cupiditate nihil? Placeat natus et quia optio doloribus odio voluptatem, nihil, velit dicta minima harum. Porro!</p>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, sequi quam. Repudiandae at quaerat laborum voluptates cumque sint illo obcaecati voluptatem tempora, harum quidem quasi vel molestiae ad 
-                        asperiores perferendis sapiente, doloremque temporibus quos molestias esse debitis reprehenderit id? A?</p>
-
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <img src="https://starmometer.com/wp-content/uploads/2021/06/BINI-2.jpg" alt="" />
-
-                        <ul>
-                            <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
-                        </ul>
-                </article>
-                <aside>
-                        <div className='sticky top-4'>
-                            <div className='shadow-[4px_2px_10px_5px_rgba(0,0,0,0.1)]  p-5 rounded-2xl mb-5'>
-                                <img src="https://via.placeholder.com/40x40" alt="" className='rounded-full size-[100px] object-cover 
-                                                    mb-0 mx-auto' />
-                                    <h3 className='text-center'>Johnny Hale</h3>
-                                    <p className='text-center mb-5 !leading-snug'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos natus rerum voluptate ipsa quae officia ullam ratione adipisci est. Magnam reprehenderit non molestiae, 
-                                                        id itaque consectetur quo labore nulla officia esse rem fugit pariatur tempora perspiciatis, doloribus unde quasi. Maiores?</p>
-
-                                    <ul className='flex justify-center gap-4'>
-                                        <li><Link className='text-2xl'><FaFacebook/></Link></li>
-                                        <li><Link className='text-2xl'><FaTwitter/></Link></li>
-                                        <li><Link className='text-2xl'><FaInstagram/></Link></li>
-                                        <li><Link className='text-2xl'><FaYoutube/></Link></li>
-                                    </ul>
-                            </div>
-
-                            <div className='shadow-[4px_2px_10px_5px_rgba(0,0,0,0.1)]  p-5 rounded-2xl mb-5'>
-                               <h2>Latest Post</h2>
-
-                               <div className='grid grid-cols-[90px_1fr] gap-3 mb-4'>
-                                <img src="https://starmometer.com/wp-content/uploads/2021/06/BINI-2.jpg" alt="" className='h-full w-full object-cover' />
-
-                                    <div>
-                                        <h4 className='mb-0'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
-                                        <small>May 5, 2002</small>
-                                    </div>
-                               </div>
-                               <div className='grid grid-cols-[90px_1fr] gap-3 mb-4'>
-                                <img src="https://starmometer.com/wp-content/uploads/2021/06/BINI-2.jpg" alt="" className='h-full w-full object-cover' />
-
-                                    <div>
-                                        <h4 className='mb-0'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
-                                        <small>May 5, 2002</small>
-                                    </div>
-                               </div>
-                               <div className='grid grid-cols-[90px_1fr] gap-3 mb-4'>
-                                <img src="https://starmometer.com/wp-content/uploads/2021/06/BINI-2.jpg" alt="" className='h-full w-full object-cover' />
-
-                                    <div>
-                                        <h4 className='mb-0'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
-                                        <small>May 5, 2002</small>
-                                    </div>
-                               </div>
-                               <div className='grid grid-cols-[90px_1fr] gap-3 mb-4'>
-                                <img src="https://starmometer.com/wp-content/uploads/2021/06/BINI-2.jpg" alt="" className='h-full w-full object-cover' />
-
-                                    <div>
-                                        <h4 className='mb-0'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
-                                        <small>May 5, 2002</small>
-                                    </div>
-                               </div>
-
-                            </div>
-                        </div>
+         
+          <div className="shadow-[4px_2px_10px_5px_rgba(0,0,0,0.1)]  p-5 rounded-2xl mb-5 ">
+              <h2>Latest Post</h2>
+            {sideIsLoading ? <SpinnerWindow/> : (
+                latestpost?.data.slice(0, 3).map((item, key)=> (
                     
-                </aside>
-            </div>
-        </div>
-        <UIFooter/>
-    </>
-  )
+                    <div className='grid grid-cols-[90px_1fr] gap-3 mb-4' key={key}>
+                        <img src={`${devBaseImgUrl}/${item.post_photo}`} alt="" className='h-full w-full object-cover'/>
+                        <div>
+                            <h4 className='mb-0'>{item.post_title}</h4>
+                            <small>{item.post_publish_date}</small>
+
+                            {console.log(item)}
+                        </div>
+                    </div>
+                ))
+            )}
+          </div>
+      </div>
+
+  </aside>
+</div>
+</div>
+</>
+)}     
+<UIFooter/>
+</>
+)
 }
 
 export default Single
