@@ -50,6 +50,7 @@ const Single = () => {
                            </h1>
                        </div>
                    </div>
+
                   <div className="container">
                       <div className='grid md:grid-cols-[2fr_1fr] gap-10'>
                             <div>
@@ -59,7 +60,7 @@ const Single = () => {
                                     <li>{post?.data[0].post_category}</li>
                                     <li>{post?.data[0].post_publish_date}</li>
                                 </ul>
-                                <Markdown > 
+                                <Markdown> 
                                     {post?.data[0].post_article}
                                 </Markdown > 
                               </article>

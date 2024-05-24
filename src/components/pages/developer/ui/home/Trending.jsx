@@ -39,10 +39,9 @@ const Trending = () => {
                     text-xs'>{item.post_category}</small>
                     <h3 className='mt-4 mb-0'>{item.post_title}</h3>
             </div>
-
             )
             )}
-
+            
             </div>
           </div>
         </div>
