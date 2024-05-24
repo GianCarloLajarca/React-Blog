@@ -146,7 +146,8 @@ const ModalAddPost = ({itemEdit, position}) => {
 
 
 
-                            </div>
+                                </div>
+                                
                             <div className="input-wrap">
                                 <InputText
                                     label="Category"

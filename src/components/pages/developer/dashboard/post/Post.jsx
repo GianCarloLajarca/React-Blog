@@ -40,7 +40,7 @@ const Post = () => {
 
   return (
     <section className='flex overflow-x-hidden'>
-        <Navigation />
+        <Navigation menu="post"/>
         <main className='w-[calc(100%-250px)]'>
             <Header/>
             <div className='flex'>

@@ -1,23 +1,25 @@
 import React from 'react'
-import { FaBlog, FaTiktok } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import Logo from './svg/Logo'
+import { MdOutlineDashboard } from "react-icons/md";
+import { AiOutlineMessage } from "react-icons/ai";
+import Logo from './svg/Logo';
 
-const Navigation = () => {
+
+const Navigation = ({menu}) => {
   return (
-    <aside className='px-4 py-6 w-[250px] text-primary h-screen border-r border-line'>
+    <aside className='px-4 py-6 w-[250px] text-primary h-screen border-r border-line sticky top-0'>
       <div className='flex items-center gap-4'>
-        <Logo />
-        <h2 className='mb-0 text-3xl'>Blog</h2>
+        <Logo/>
+        <h1 className='mb-0'>Blog</h1>
       </div>
-        <ul className='nav'>
-            <li className='nav-link active'><Link to="/post"><FaBlog />Posts</Link></li>
-            <li className='nav-link'><Link to="#"><FaTiktok/>Messenger</Link></li>
-            <li className='nav-link'><Link to="#"><FaTiktok/>Calendar</Link></li>
-            <li className='nav-link'><Link to="#"><FaTiktok/>Database</Link></li>
-            <li className='nav-link'><Link to="#"><FaTiktok/>Attendance</Link></li>
-            <li className='nav-link'><Link to="#"><FaTiktok/>Settings</Link></li>
-        </ul>
+      
+
+      <ul className='nav'>
+        <li className='nav-link '><Link to="#"><MdOutlineDashboard />Dashboard</Link></li>
+        <li className={`nav-link ${menu === "post" ? "active" : ""}`}><Link to="/dashboard/post"><AiOutlineMessage />Post</Link></li>
+        <li className={`nav-link ${menu === "category" ? "active" : ""}`}><Link to="/dashboard/category"><MdOutlineDashboard />Category</Link></li>
+        <li className={`nav-link ${menu === "tag" ? "active" : ""}`}><Link to="/dashboard/tag"><MdOutlineDashboard />Tag</Link></li>
+      </ul>
     </aside>
   )
 }

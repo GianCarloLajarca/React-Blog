@@ -4,6 +4,7 @@ import Single from "./components/pages/developer/ui/single/Single"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { StoreProvider } from "./store/StoreContext"
 import Post from "./components/pages/developer/dashboard/post/Post"
+import Category from "./components/pages/developer/dashboard/category/Category"
 
 function App() {
 
@@ -17,7 +18,9 @@ function App() {
                   <Routes>
                         <Route path="/home" element={<Home/>}/>
                         <Route path="/single" element={<Single/>}/>
-                        <Route path="/post" element={<Post/>}/>
+                        <Route path="dashboard/post" element={<Post/>}/>
+                        <Route path="/dashboard/category" element={<Category/>}/>
+
                   </Routes>
                 </Router>
       </StoreProvider>
